@@ -1,5 +1,6 @@
 import { Form, Button, Container, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { iniciarSesion } from "../helpers/queries";
 
 const Login = () => {
   const {
@@ -11,6 +12,14 @@ const Login = () => {
 
   const onSubmit = (usuario) => {
     console.log(usuario);
+    iniciarSesion(usuario).then((respuesta)=>{
+      if(respuesta){
+        console.log('aqui esta todo bien');
+      }else{
+        console.log('No hay usuario registrado con esos datos')
+      }
+    });
+    reset();
   };
 
   return (
